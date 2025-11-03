@@ -36,6 +36,11 @@ WHERE table_schema = 'afisha'
 	)
 ORDER BY table_name;
 
+--Выводим первые строки таблицы purchases
+SELECT *
+FROM afisha.purchases p 
+LIMIT 5;
+
 /* Описание таблицы purchases:
 * order_id — уникальный идентификатор заказа.
 * user_id — уникальный идентификатор пользователя.
@@ -52,6 +57,11 @@ ORDER BY table_name;
 * total — общая сумма заказа.
 */
 
+--Выводим первые строки таблицы events
+SELECT *
+FROM afisha.events e 
+LIMIT 5;
+
 /* Описание таблицы events:
 * event_id — уникальный идентификатор мероприятия.
 * event_name_code — название мероприятия в закодированном виде.
@@ -62,17 +72,32 @@ ORDER BY table_name;
 * venue_id — идентификатор площадки проведения мероприятия из таблицы venues.
 */
 
+--Выводим первые строки таблицы venues
+SELECT *
+FROM afisha.venues v
+LIMIT 5;
+
 /* Описание таблицы venues:
 * venue_id — уникальный идентификатор площадки.
 * venue_name — название площадки.
 * address — адрес площадки.
 */
 
+--Выводим первые строки таблицы city
+SELECT *
+FROM afisha.city c
+LIMIT 5;
+
 /* Описание таблицы city:
 * city_id — уникальный идентификатор города.
 * city_name — название города.
 * region_id — идентификатор региона, к которому относится город, из таблицы regions.
 */
+
+--Выводим первые строки таблицы regions
+SELECT *
+FROM afisha.regions r
+LIMIT 5;
 
 /* Описание таблицы regions:
 * region_id — уникальный идентификатор региона.
@@ -120,11 +145,6 @@ FROM afisha.purchases p;
 SELECT COUNT(DISTINCT user_id)
 FROM afisha.purchases p;
 --Заказы совершили 22 000 пользователей.
-
-SELECT *
-FROM afisha.purchases p 
-LIMIT 5;
---Данные соответствуют описанию.
 
 --Проверяем пропуски
 SELECT 
@@ -208,17 +228,12 @@ FROM duplicates;
 
 --2.2. Таблица events:
 SELECT COUNT(*)
-FROM afisha.events e 
+FROM afisha.events e; 
 --Таблица информацию о 22 484 мероприятиях.
 
 SELECT COUNT(DISTINCT event_name_code)
-FROM afisha.events e
+FROM afisha.events e;
 --Таблица содержит 15 287 названий мероприятий. Одно и то же событие могло проводиться в разных городах на разных площадках.
-
-SELECT *
-FROM afisha.events e 
-LIMIT 5
---Данные соответствуют описанию.
 
 --Проверяем пропуски
 SELECT 
@@ -282,13 +297,8 @@ FROM duplicates;
 
 --2.3. Таблица venues:
 SELECT COUNT(*)
-FROM afisha.venues v  
+FROM afisha.venues v;  
 --Таблица содержит информацию о 3 228 площадках.
-
-SELECT *
-FROM afisha.venues v
-LIMIT 5
---Данные соответствуют описанию.
 
 --Проверяем пропуски
 SELECT 
@@ -327,13 +337,8 @@ FROM duplicates;
 
 --2.4. Таблица city:
 SELECT COUNT(*)
-FROM afisha.city c   
+FROM afisha.city c;   
 --Таблица содержит информацию о 353 городах.
-
-SELECT *
-FROM afisha.city c
-LIMIT 5
---Данные соответствуют описанию.
 
 --Проверяем пропуски
 SELECT 
@@ -372,13 +377,8 @@ FROM duplicates;
 
 --2.5. Таблица regions:
 SELECT COUNT(*)
-FROM afisha.regions r    
+FROM afisha.regions r;    
 --Таблица содержит информацию о 81 регионе.
-
-SELECT *
-FROM afisha.regions r
-LIMIT 5
---Данные соответствуют описанию.
 
 --Проверяем пропуски
 SELECT 
