@@ -71,7 +71,7 @@ SELECT
 	region,
 	time_on_market,
 	COUNT(id) AS flats_total,
-	ROUND(COUNT(id) / SUM(COUNT(id)) OVER (PARTITION BY region)::numeric, 2) AS flats_share,
+	ROUND(COUNT(id) / SUM(COUNT(id)) OVER (PARTITION BY region)::numeric, 2) AS segment_share,
 	ROUND(AVG(price_per_sqm)) AS avg_price_per_sqm,
 	ROUND(AVG(total_area)) AS avg_total_area,
 	ROUND(AVG(ceiling_height)::numeric, 2) AS avg_ceiling_height,
@@ -199,5 +199,5 @@ WHERE
 	AND a.id IN (SELECT * FROM filtered_id) --убираем объяления с вбросами по площади
 GROUP BY city
 HAVING COUNT(f.id) >= 50 --отсекаем нерепрезентативные данные, но сохраняем активные рынки
-ORDER BY flats_total DESC;
+ORDER BY avg_days_exposition DESC;
 	
